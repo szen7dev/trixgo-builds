@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       REF:
-        description: "Branch"
+        description: "Branch or commit sha"
         required: false
         default: "main"
         type: string
@@ -32,6 +32,7 @@ jobs:
       CHECKOUT_REPOSITORY: ${{ secrets.FE_CHECKOUT_REPOSITORY }}
       CHECKOUT_SSH_KEY: ${{ secrets.FE_CHECKOUT_SSH_KEY }}
       IMAGE_REPOSITORY: ${{ secrets.FE_IMAGE_REPOSITORY }}
+      IMAGE_TAG: ${{ inputs.IMAGE_TAG }}
     with:
       REF: ${{ inputs.REF }}
       DOCKER_FILE: ${{ inputs.DOCKER_FILE }}
