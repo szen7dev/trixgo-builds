@@ -1,0 +1,39 @@
+name: Build Worker
+
+on:
+  workflow_dispatch:
+    inputs:
+      REF:
+        description: "Branch or commit sha"
+        required: false
+        default: "main"
+        type: string
+      IMAGE_TAG:
+        description: "Image tag"
+        required: false
+        default: "latest"
+        type: string
+      DOCKER_FILE:
+        description: "Path to Dockerfile"
+        required: false
+        default: "./Dockerfile"
+        type: string
+      CONTEXT:
+        description: "Docker build context"
+        required: false
+        default: "."
+        type: string
+
+jobs:
+  backend:
+    uses: ./.github/workflows/build-docker.yml
+    secrets:
+      GHCR_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      CHECKOUT_REPOSITORY: ${{ secrets.WORKER_CHECKOUT_REPOSITORY }}
+      CHECKOUT_SSH_KEY: ${{ secrets.WORKER_CHECKOUT_SSH_KEY }}
+      IMAGE_REPOSITORY: ${{ secrets.WORKER_IMAGE_REPOSITORY }}
+      IMAGE_TAG: ${{ inputs.IMAGE_TAG }}
+    with:
+      REF: ${{ inputs.REF }}
+      DOCKER_FILE: ${{ inputs.DOCKER_FILE }}
+      CONTEXT: ${{ inputs.CONTEXT }}
