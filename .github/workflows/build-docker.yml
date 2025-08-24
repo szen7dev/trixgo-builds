@@ -76,4 +76,4 @@ jobs:
           context: ${{ inputs.CONTEXT }}
           file: ${{ inputs.DOCKER_FILE }}
           push: true
-          tags: ${{ env.IMAGE_REGISTRY }}/${{ secrets.IMAGE_REPOSITORY }}:${{ inputs.IMAGE_TAG }}
+          tags: ${{ secrets.IMAGE_REGISTRY }}/${{ secrets.IMAGE_REPOSITORY }}:${{ inputs.IMAGE_TAG }}
