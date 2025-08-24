@@ -7,14 +7,17 @@ on:
         description: "Branch"
         required: false
         default: "main"
+        type: string
       DOCKER_FILE:
         description: "Path to Dockerfile"
         required: false
         default: "./Dockerfile"
+        type: string
       context:
         description: "Docker build CONTEXT"
         required: false
         default: "."
+        type: string
     secrets:
       GHCR_TOKEN:
         required: true
