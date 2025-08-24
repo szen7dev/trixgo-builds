@@ -19,7 +19,13 @@ on:
         default: "."
         type: string
     secrets:
-      GHCR_TOKEN:
+      IMAGE_REGISTRY:
+        required: true
+        default: "ghcr.io"
+      IMAGE_REGISTRY_USERNAME:
+        required: true
+        default: "${{ github.actor }}"
+      IMAGE_REGISTRY_PASSWORD:
         required: true
       CHECKOUT_REPOSITORY:
         required: false
@@ -43,7 +49,6 @@ jobs:
       packages: write
 
     env:
-      IMAGE_REGISTRY: ghcr.io
       DOCKER_BUILD_RECORD_UPLOAD: false
 
     steps:
@@ -57,9 +62,9 @@ jobs:
       - name: Authenticate with GitHub Container Registry
         uses: docker/login-action@v3
         with:
-          registry: ${{ env.IMAGE_REGISTRY }}
-          username: ${{ github.actor }}
-          password: ${{ secrets.GHCR_TOKEN }}
+          registry: ${{ secrets.IMAGE_REGISTRY }}
+          username: ${{ secrets.IMAGE_REGISTRY_USERNAME }}
+          password: ${{ secrets.IMAGE_REGISTRY_PASSWORD }}
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3

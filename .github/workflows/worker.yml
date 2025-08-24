@@ -28,11 +28,13 @@ jobs:
   build:
     uses: ./.github/workflows/build-docker.yml
     secrets:
-      GHCR_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       CHECKOUT_REPOSITORY: ${{ secrets.WORKER_CHECKOUT_REPOSITORY }}
       CHECKOUT_SSH_KEY: ${{ secrets.WORKER_CHECKOUT_SSH_KEY }}
       IMAGE_REPOSITORY: ${{ secrets.WORKER_IMAGE_REPOSITORY }}
       IMAGE_TAG: ${{ inputs.IMAGE_TAG }}
+      IMAGE_REGISTRY: ${{ secrets.IMAGE_REGISTRY }}
+      IMAGE_REGISTRY_USERNAME: ${{ secrets.IMAGE_REGISTRY_USERNAME }}
+      IMAGE_REGISTRY_PASSWORD: ${{ secrets.IMAGE_REGISTRY_PASSWORD }}
     with:
       REF: ${{ inputs.REF }}
       DOCKER_FILE: ${{ inputs.DOCKER_FILE }}
