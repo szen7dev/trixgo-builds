@@ -1,0 +1,16 @@
+name: Build FE
+
+on:
+  workflow_dispatch:
+
+jobs:
+  frontend:
+    uses: ./.github/workflows/build-docker.yml
+    secrets:
+      GHCR_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      CHECKOUT_SSH_KEY: ${{ secrets.CHECKOUT_SSH_KEY }}
+      CHECKOUT_REPOSITORY: ${{ secrets.FE_CHECKOUT_REPOSITORY }}
+      IMAGE_REPOSITORY: ${{ secrets.FE_IMAGE_REPOSITORY }}
+    with:
+      DOCKER_FILE: ./Dockerfile
+      CONTEXT: .

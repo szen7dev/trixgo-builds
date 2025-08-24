@@ -1,0 +1,16 @@
+name: Build BE
+
+on:
+  workflow_dispatch:
+
+jobs:
+  backend:
+    uses: ./.github/workflows/build-docker.yml
+    secrets:
+      GHCR_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      CHECKOUT_SSH_KEY: ${{ secrets.CHECKOUT_SSH_KEY }}
+      CHECKOUT_REPOSITORY: ${{ secrets.BE_CHECKOUT_REPOSITORY }}
+      IMAGE_REPOSITORY: ${{ secrets.BE_IMAGE_REPOSITORY }}
+    with:
+      DOCKER_FILE: ./Dockerfile
+      CONTEXT: .

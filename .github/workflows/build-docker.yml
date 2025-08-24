@@ -21,6 +21,10 @@ on:
     secrets:
       GHCR_TOKEN:
         required: true
+      CHECKOUT_REPOSITORY:
+        required: false
+      CHECKOUT_SSH_KEY:
+        required: false
       IMAGE_REPOSITORY:
         description: "GitHub repository path (e.g. org/repo)"
         required: true
