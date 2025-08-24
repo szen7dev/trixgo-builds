@@ -13,8 +13,8 @@ on:
         required: false
         default: "./Dockerfile"
         type: string
-      context:
-        description: "Docker build CONTEXT"
+      CONTEXT:
+        description: "Docker build context"
         required: false
         default: "."
         type: string

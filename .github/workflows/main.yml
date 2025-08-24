@@ -14,5 +14,5 @@ jobs:
       GHCR_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       IMAGE_REPOSITORY: ${{ github.repository }}
     with:
-      dockerfile: ./Dockerfile
-      context: .
+      DOCKER_FILE: ./Dockerfile
+      CONTEXT: .
