@@ -1,0 +1,18 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+      - staging
+  workflow_dispatch:
+
+jobs:
+  build-app:
+    uses: ./.github/workflows/build-docker.yml
+    secrets:
+      GHCR_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      IMAGE_REPOSITORY: ${{ github.repository }}
+    with:
+      dockerfile: ./Dockerfile
+      context: .
