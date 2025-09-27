@@ -28,6 +28,7 @@ jobs:
   build:
     uses: ./.github/workflows/build-docker.yml
     secrets:
+      GHCR_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       CHECKOUT_REPOSITORY: ${{ secrets.WEBSITE_CHECKOUT_REPOSITORY }}
       CHECKOUT_SSH_KEY: ${{ secrets.WEBSITE_CHECKOUT_SSH_KEY }}
       IMAGE_REPOSITORY: ${{ secrets.WEBSITE_IMAGE_REPOSITORY }}
