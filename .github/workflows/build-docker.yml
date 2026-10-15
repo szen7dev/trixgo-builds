@@ -55,7 +55,7 @@ jobs:
 
     steps:
       - name: Checkout source code
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           repository: ${{ secrets.CHECKOUT_REPOSITORY }}
           ref: ${{ inputs.REF || 'main' }}
