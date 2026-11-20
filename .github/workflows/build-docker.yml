@@ -63,7 +63,7 @@ jobs:
       
       - name: Authenticate with GitHub Container Registry
         if: ${{ env.GHCR_ENABLED == 'true' }}
-        uses: docker/login-action@v3
+        uses: docker/login-action@v4
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
@@ -71,7 +71,7 @@ jobs:
 
       - name: Authenticate with Container Registry
         if: ${{ env.IMAGE_REGISTRY_ENABLED == 'true' }}
-        uses: docker/login-action@v3
+        uses: docker/login-action@v4
         with:
           registry: ${{ secrets.IMAGE_REGISTRY }}
           username: ${{ secrets.IMAGE_REGISTRY_USERNAME }}
